@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show All User Data</title>
+</head>
+<body>
+    <table border="1">
+           <tr>
+            <td>Id</td>
+            <td>Email</td>
+            <td>Username</td>
+            <td>Edit Button</td>
+            <td>Delete Button</td>
+           </tr>
+           <% for(user of users){ %>
+            <tr>
+                <td> <%= user.id %></td>
+                <td> <%= user.email %></td>
+                <td><%= user.username %></td>
+                <td>
+                    <form method="get" action="/user/<%= user.id %>/edit">
+                         <button>Edit Username</button>
+                    </form>
+                </td> 
+                <td>
+                    <form method="post" action="/user/<%=user.id%>?_method=DELETE">
+                       <button>Delete Details</button>
+                    </form>
+                </td>
+            </tr>
+          <% } %> 
+    </table>
+    <br><br>
+    <a href="http://localhost:8090/user/add">Create a New-Post</a>
+</body>
+</html>
